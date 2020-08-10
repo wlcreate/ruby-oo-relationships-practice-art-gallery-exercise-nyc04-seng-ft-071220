@@ -33,15 +33,32 @@ class Artist
   end
 
   def self.total_experience
-    self.all.map do |artist|
+    total_experience = self.all.map do |artist|
       artist.years_experience
-      binding.pry
+    end
+    total_experience.sum
+  end
+
+  def create_painting(title, price, gallery)
+    new_painting = Painting.new(title, price)
+    new_painting.artist = self
+    new_painting.gallery = gallery
+  end
+
+  def self.most_prolific
+    self.all.max_by do |artist|
+      artist.years_experience
     end
   end
 
 end
 
-#What to do:
+#Need to do:
+# `Artist.most_prolific`
+  #Returns an `instance` of the artist with 
+  #the highest amount of paintings per year of experience.
+
+#COMPLETED:
 #* `Artist.all`
     #Returns an `array` of all the artists
 
@@ -56,9 +73,6 @@ end
 
 # * `Artist.total_experience`
     #Returns an `integer` that is the total years of experience of all artists
-
-# * `Artist.most_prolific`
-    #Returns an `instance` of the artist with the highest amount of paintings per year of experience.
 
 # * `Artist#create_painting`
     #Given the arguments of `title`, `price` and `gallery`, creates a new painting belonging to that artist

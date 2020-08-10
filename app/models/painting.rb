@@ -34,7 +34,7 @@ class Painting
 end
 
 
-#What to do:
+#COMPLETED:
 #`Painting.all`
   #Returns an `array` of all the paintings
 
